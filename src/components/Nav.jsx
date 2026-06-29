@@ -6,8 +6,20 @@ export default function Nav() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 60 && currentScrollY > lastScrollY) {
+        // Scrolling down past threshold -> shrink
+        setScrolled(true);
+      } else if (currentScrollY < lastScrollY || currentScrollY <= 60) {
+        // Scrolling up or at top -> proper shape
+        setScrolled(false);
+      }
+      
+      lastScrollY = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
