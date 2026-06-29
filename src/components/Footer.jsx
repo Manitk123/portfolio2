@@ -103,8 +103,8 @@ export default function Footer() {
               <EmailIcon />
               Get In Touch
             </a>
-            <a href="/resume.pdf" className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              Download Resume
+            <a href={`${import.meta.env.BASE_URL}resume.pdf`} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
+              View Resume
             </a>
           </div>
         </div>

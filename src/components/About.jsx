@@ -15,7 +15,7 @@ export default function About() {
 
         <div className="about-grid">
           <div className="about-image-container reveal" style={revealStyle(2)}>
-            <img src="/profile.jpg" alt="Manit Kumar" className="about-image" />
+            <img src={`${import.meta.env.BASE_URL}profile.jpg`} alt="Manit Kumar" className="about-image" />
           </div>
 
           <div className="about-text-content">

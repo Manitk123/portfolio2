@@ -51,7 +51,7 @@ export default function Nav() {
           </a>
         ))}
         <a
-          href="/resume.pdf"
+          href={`${import.meta.env.BASE_URL}resume.pdf`}
           className="nav-resume-btn"
           target="_blank"
           rel="noopener noreferrer"
