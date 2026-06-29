@@ -118,7 +118,7 @@ export const projects = [
     tech: ["Python", "Deep Learning", "PyTorch", "Linux"],
     description:
       "Host-Based Intrusion Detection System using a custom Transformer architecture to detect system-level anomalies. Performance benchmarked against traditional LSTM models.",
-    link: "#",
+    link: "https://github.com/Manitk123/Transformer-HIDS-Research",
     featured: true,
   },
   {
