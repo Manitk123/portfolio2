@@ -109,7 +109,7 @@ export const projects = [
     tech: ["FastAPI", "Next.js", "Docker", "Frida", "Celery", "PostgreSQL"],
     description:
       "Full-stack automated sandbox pipeline processing real-time file payloads across WhatsApp, Slack, and Telegram bots. Features Frida dynamic instrumentation and distributed Celery queue for async task processing.",
-    link: "#",
+    link: "https://github.com/Manitk123/detonatebot",
     featured: true,
   },
   {
