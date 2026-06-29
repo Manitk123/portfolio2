@@ -145,8 +145,8 @@ export const projects = [
     tech: ["React", "Firebase"],
     description:
       "Community-centric ride-sharing application addressing campus-wide commuter challenges. Real-time data sync using Firebase for accurate rider and driver tracking.",
-    link: "#",
-    featured: false,
+    link: "https://github.com/Manitk123/Cabu",
+    featured: true,
   },
   {
     title: "Telegram Bots",
