@@ -166,6 +166,7 @@ export const achievements = [
 ];
 
 export const certifications = [
+  "CS50 - Introduction to CyberSecurity (Harvard University)",
   "Kali Linux — Penetration Testing Training (Infosys Springboard)",
   "DSA Specialist Training (Infosys Springboard)",
 ];

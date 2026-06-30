@@ -9,7 +9,7 @@ function AnimatedTorusKnot() {
   // Custom shader material for iridescent green glass look
   const material = useMemo(() => {
     return new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color('#6D9B7B'),
+      color: new THREE.Color('#00B4D8'),
       metalness: 0.3,
       roughness: 0.1,
       transmission: 0.6,
@@ -18,7 +18,7 @@ function AnimatedTorusKnot() {
       clearcoat: 1,
       clearcoatRoughness: 0.1,
       envMapIntensity: 2,
-      emissive: new THREE.Color('#2D5B5A'),
+      emissive: new THREE.Color('#03045E'),
       emissiveIntensity: 0.15,
     });
   }, []);
@@ -34,7 +34,7 @@ function AnimatedTorusKnot() {
   return (
     <Float speed={1.5} rotationIntensity={0.2} floatIntensity={0.5}>
       <mesh ref={meshRef} material={material} scale={1.8}>
-        <torusKnotGeometry args={[1, 0.35, 200, 32, 3, 5]} />
+        <torusKnotGeometry args={[1, 0.35, 128, 16, 3, 5]} />
       </mesh>
     </Float>
   );
@@ -73,7 +73,7 @@ function ParticleField() {
       </bufferGeometry>
       <pointsMaterial
         size={0.03}
-        color="#B2C48A"
+        color="#90E0EF"
         transparent
         opacity={0.6}
         sizeAttenuation
@@ -87,18 +87,20 @@ export default function HeroScene() {
     <div className="hero-canvas">
       <Canvas
         camera={{ position: [0, 0, 6], fov: 50 }}
-        gl={{ antialias: true, alpha: true }}
+        gl={{ antialias: false, alpha: true, powerPreference: "high-performance" }}
+        dpr={[1, 1.5]}
+        performance={{ min: 0.5 }}
         style={{ background: 'transparent' }}
       >
         <ambientLight intensity={0.4} />
-        <directionalLight position={[5, 5, 5]} intensity={1} color="#B2C48A" />
-        <directionalLight position={[-5, -3, -5]} intensity={0.5} color="#6D9B7B" />
-        <pointLight position={[0, 0, 4]} intensity={0.8} color="#B2C48A" />
+        <directionalLight position={[5, 5, 5]} intensity={1} color="#90E0EF" />
+        <directionalLight position={[-5, -3, -5]} intensity={0.5} color="#00B4D8" />
+        <pointLight position={[0, 0, 4]} intensity={0.8} color="#90E0EF" />
 
         <AnimatedTorusKnot />
         <ParticleField />
 
-        <Environment preset="night" />
+        <Environment preset="night" resolution={256} />
       </Canvas>
     </div>
   );

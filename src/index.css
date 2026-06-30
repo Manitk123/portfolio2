@@ -8,17 +8,17 @@
 
 /* ── CSS Custom Properties ── */
 :root {
-  /* Color Palette */
-  --sage: #B2C48A;
-  --sage-light: #C8D8A6;
-  --sage-glow: rgba(178, 196, 138, 0.4);
-  --forest: #6D9B7B;
-  --forest-glow: rgba(109, 155, 123, 0.3);
-  --teal: #2D5B5A;
-  --teal-dark: #1F4342;
-  --charcoal: #2A3140;
-  --charcoal-deep: #1C2230;
-  --charcoal-light: #343D50;
+  /* Color Palette (Midnight Ocean) */
+  --sage: #90E0EF;
+  --sage-light: #CAF0F8;
+  --sage-glow: rgba(144, 224, 239, 0.4);
+  --forest: #00B4D8;
+  --forest-glow: rgba(0, 180, 216, 0.3);
+  --teal: #03045E;
+  --teal-dark: #023E8A;
+  --charcoal: #0B0E14;
+  --charcoal-deep: #05070A;
+  --charcoal-light: #151A22;
   --white: #F0F2EE;
   --white-pure: #FFFFFF;
   --grey-light: #E8EBE4;
@@ -71,8 +71,8 @@
   --z-loader: 1000;
 
   /* Glassmorphism */
-  --glass-bg: rgba(45, 91, 90, 0.15);
-  --glass-border: rgba(178, 196, 138, 0.2);
+  --glass-bg: rgba(3, 4, 94, 0.15); /* Teal/Navy base */
+  --glass-border: rgba(144, 224, 239, 0.2); /* Light blue border */
   --glass-blur: 16px;
 }
 
@@ -757,9 +757,9 @@ button {
   height: 100%;
   background: linear-gradient(
     135deg,
-    rgba(109, 155, 123, 0.3) 0%,
+    rgba(0, 180, 216, 0.3) 0%,
     transparent 50%,
-    rgba(178, 196, 138, 0.2) 100%
+    rgba(144, 224, 239, 0.2) 100%
   );
 }
 
