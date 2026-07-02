@@ -10,20 +10,20 @@ export default function About() {
   return (
     <section id="about" className="section about reveal" ref={sectionRef}>
       <div className="section-inner">
-        <span className="section-label reveal" style={revealStyle(0)}>About Me</span>
-        <h2 className="section-title reveal" style={revealStyle(1)}>Know Me More</h2>
+        <span className="section-label reveal">About Me</span>
+        <h2 className="section-title reveal">Know Me More</h2>
 
         <div className="about-grid">
-          <div className="about-image-container reveal" style={revealStyle(2)}>
+          <div className="about-image-container reveal">
             <img src={`${import.meta.env.BASE_URL}profile.jpg`} alt="Manit Kumar" className="about-image" />
           </div>
 
           <div className="about-text-content">
-            <p className="about-description" style={revealStyle(3)}>
+            <p className="about-description">
               <TypewriterText text={summary} delay={300} speed={15} />
             </p>
 
-            <div className="about-details reveal" style={revealStyle(4)}>
+            <div className="about-details reveal">
               <div className="about-detail-item">
                 <span className="about-detail-label">Education</span>
                 <span className="about-detail-value">{education.degree}</span>
@@ -42,7 +42,7 @@ export default function About() {
               </div>
             </div>
 
-            <div className="about-tech-strip reveal" style={revealStyle(5)}>
+            <div className="about-tech-strip reveal">
               {techLogos.map((tech) => (
                 <span key={tech} className="about-tech-icon">{tech}</span>
               ))}
@@ -50,24 +50,6 @@ export default function About() {
           </div>
         </div>
       </div>
-
-      <style>{`
-        .reveal {
-          opacity: 0;
-          transform: translateY(40px);
-          transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                      transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .animate-in .reveal,
-        .reveal.animate-in {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      `}</style>
     </section>
   );
-}
-
-function revealStyle(index) {
-  return { transitionDelay: `${index * 0.1}s` };
 }

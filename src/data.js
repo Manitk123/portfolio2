@@ -110,6 +110,7 @@ export const projects = [
     description:
       "Full-stack automated sandbox pipeline processing real-time file payloads across WhatsApp, Slack, and Telegram bots. Features Frida dynamic instrumentation and distributed Celery queue for async task processing.",
     link: "https://github.com/Manitk123/detonatebot",
+    image: "/Portfolio/assets/detonate.png",
     featured: true,
   },
   {
@@ -119,6 +120,7 @@ export const projects = [
     description:
       "Host-Based Intrusion Detection System using a custom Transformer architecture to detect system-level anomalies. Performance benchmarked against traditional LSTM models.",
     link: "https://github.com/Manitk123/Transformer-HIDS-Research",
+    image: "/Portfolio/assets/hids.png",
     featured: true,
   },
   {
@@ -128,6 +130,7 @@ export const projects = [
     description:
       "Automated malware analysis system using Cuckoo Sandbox to safely isolate and monitor threats. Evaluates malicious behavior by parsing API calls, network traffic, and filesystem modifications.",
     link: "#",
+    image: "/Portfolio/assets/malware.png",
     featured: false,
   },
   {
@@ -137,6 +140,7 @@ export const projects = [
     description:
       "Safety-centric routing application assisting users in selecting secure paths for public transportation with predictive safety scoring.",
     link: "#",
+    image: "/Portfolio/assets/nirbhaya.png",
     featured: false,
   },
   {
@@ -146,6 +150,7 @@ export const projects = [
     description:
       "Community-centric ride-sharing application addressing campus-wide commuter challenges. Real-time data sync using Firebase for accurate rider and driver tracking.",
     link: "https://github.com/Manitk123/Cabu",
+    image: "/Portfolio/assets/cabu.png",
     featured: true,
   },
   {
@@ -155,6 +160,7 @@ export const projects = [
     description:
       "Versatile automated scripts managing high-volume community channels with webhook command handling for fast data retrieval and remote file management.",
     link: "#",
+    image: "/Portfolio/assets/telegram.png",
     featured: false,
   },
 ];
@@ -166,9 +172,46 @@ export const achievements = [
 ];
 
 export const certifications = [
-  "CS50 - Introduction to CyberSecurity (Harvard University)",
-  "Kali Linux — Penetration Testing Training (Infosys Springboard)",
-  "DSA Specialist Training (Infosys Springboard)",
+  {
+    title: "CS50 - Introduction to CyberSecurity",
+    provider: "Harvard University",
+    link: ""
+  },
+  {
+    title: "Kali Linux — Penetration Testing",
+    provider: "Infosys Springboard",
+    link: ""
+  },
+  {
+    title: "DSA Specialist Training",
+    provider: "Infosys Springboard",
+    link: ""
+  },
+  {
+    title: "Data Structures",
+    provider: "Coursera",
+    link: "https://www.coursera.org/account/accomplishments/verify/QETW9RNOPDXR"
+  },
+  {
+    title: "C++ Basics: Selection and Iteration",
+    provider: "Coursera",
+    link: "https://coursera.org/share/ccc3067642a5837505a233a2d4469db5"
+  },
+  {
+    title: "Object-Oriented Data Structures in C++",
+    provider: "Coursera",
+    link: "https://coursera.org/share/b6184251075024f57fc6fd64630c4846"
+  },
+  {
+    title: "Fundamentals of Network Communication",
+    provider: "Coursera",
+    link: "https://www.coursera.org/account/accomplishments/verify/8DLNTRJ5KZZN"
+  },
+  {
+    title: "Introduction to Cybersecurity Tools & Cyberattacks",
+    provider: "Coursera",
+    link: "https://coursera.org/share/32526cfbc5f3e12aea66fca638ba95f5"
+  }
 ];
 
 export const navLinks = [

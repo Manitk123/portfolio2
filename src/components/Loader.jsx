@@ -2,13 +2,10 @@ import { useState, useEffect } from 'react';
 
 export default function Loader({ onComplete }) {
   const [percent, setPercent] = useState(0);
-  const [filling, setFilling] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [loadingText, setLoadingText] = useState("INITIALIZING...");
 
   useEffect(() => {
-    // Start fill animation after a tiny delay
-    const fillTimer = setTimeout(() => setFilling(true), 200);
-
     // Simulate loading progress
     const interval = setInterval(() => {
       setPercent((prev) => {
@@ -22,36 +19,70 @@ export default function Loader({ onComplete }) {
       });
     }, 50);
 
+    // Text Scrambler Effect
+    const phases = ["INITIALIZING...", "LOADING_ASSETS...", "DECRYPTING...", "SYSTEM_READY"];
+    let phaseIndex = 0;
+    
+    const textInterval = setInterval(() => {
+      if (phaseIndex >= phases.length - 1) {
+        clearInterval(textInterval);
+        return;
+      }
+      
+      const target = phases[phaseIndex + 1];
+      let iterations = 0;
+      
+      const scrambleInterval = setInterval(() => {
+        setLoadingText(target.split("").map((char, index) => {
+          if (index < iterations) return char;
+          return String.fromCharCode(33 + Math.floor(Math.random() * 94)); // Random ASCII
+        }).join(""));
+        
+        iterations += 1/3;
+        if (iterations >= target.length) {
+          clearInterval(scrambleInterval);
+          setLoadingText(target);
+          phaseIndex++;
+        }
+      }, 30);
+    }, 700);
+
     // Auto-dismiss after minimum display time
     const dismissTimer = setTimeout(() => {
       setPercent(100);
+      setLoadingText("SYSTEM_READY");
       clearInterval(interval);
+      clearInterval(textInterval);
       setTimeout(() => {
         setHidden(true);
         setTimeout(() => onComplete?.(), 600);
-      }, 400);
-    }, 2800);
+      }, 500);
+    }, 3000);
 
     return () => {
-      clearTimeout(fillTimer);
       clearTimeout(dismissTimer);
       clearInterval(interval);
+      clearInterval(textInterval);
     };
   }, [onComplete]);
 
   return (
     <div className={`loader-screen ${hidden ? 'hidden' : ''}`}>
-      <div className="loader-logo">
-        <span className="loader-logo-outline">MK</span>
-        <span className={`loader-logo-fill ${filling ? 'filling' : ''}`}>MK</span>
-      </div>
-
-      <div className="loader-bottom">
-        <span className="loader-text">Loading</span>
-        <div className="loader-bar">
-          <div className="loader-bar-fill" style={{ width: `${percent}%` }} />
+      <div className="loader-door-top"></div>
+      <div className="loader-door-bottom"></div>
+      
+      <div className="loader-content">
+        <div className="loader-logo">
+          <span className="loader-logo-text">MK</span>
         </div>
-        <span className="loader-percent">{percent}%</span>
+
+        <div className="loader-bottom">
+          <span className="loader-text">{loadingText}</span>
+          <div className="loader-bar">
+            <div className="loader-bar-fill" style={{ width: `${percent}%` }} />
+          </div>
+          <span className="loader-percent">{percent}%</span>
+        </div>
       </div>
     </div>
   );

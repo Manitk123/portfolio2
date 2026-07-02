@@ -1,41 +1,7 @@
-import { useRef, useMemo } from 'react';
+import { useRef } from 'react';
 import { useScrollReveal } from '../hooks/useAnimations';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Environment } from '@react-three/drei';
-import * as THREE from 'three';
 import { personalInfo, navLinks } from '../data';
-
-function FooterKnot() {
-  const meshRef = useRef();
-
-  const material = useMemo(() => {
-    return new THREE.MeshPhysicalMaterial({
-      color: new THREE.Color('#6D9B7B'),
-      metalness: 0.9,
-      roughness: 0.1,
-      transmission: 0.9,
-      thickness: 0.5,
-      wireframe: true,
-      emissive: new THREE.Color('#B2C48A'),
-      emissiveIntensity: 0.5,
-    });
-  }, []);
-
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += 0.005;
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.5) * 0.2;
-    }
-  });
-
-  return (
-    <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-      <mesh ref={meshRef} material={material} scale={1.8}>
-        <icosahedronGeometry args={[1, 1]} />
-      </mesh>
-    </Float>
-  );
-}
+import MagneticElement from './MagneticElement';
 
 // SVG icons for social links
 function GitHubIcon() {
@@ -76,21 +42,13 @@ export default function Footer() {
 
   return (
     <section className="section footer-section" id="contact" ref={sectionRef}>
-      <div className="section-inner">
+      <div className="section-inner footer-inner">
         {/* CTA Area */}
         <div className="footer-cta reveal">
-          <div className="footer-cta-canvas">
-            <Canvas
-              camera={{ position: [0, 0, 4], fov: 50 }}
-              gl={{ antialias: true, alpha: true }}
-              style={{ background: 'transparent' }}
-            >
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[3, 3, 5]} intensity={1} color="#B2C48A" />
-              <pointLight position={[-3, -2, 3]} intensity={0.6} color="#6D9B7B" />
-              <FooterKnot />
-              <Environment preset="night" />
-            </Canvas>
+          <div className="footer-cta-bg">
+            <div className="footer-orb orb-1"></div>
+            <div className="footer-orb orb-2"></div>
+            <div className="footer-orb orb-3"></div>
           </div>
 
           <h2 className="footer-cta-text">
@@ -99,13 +57,17 @@ export default function Footer() {
           </h2>
 
           <div className="footer-cta-buttons">
-            <a href={`mailto:${personalInfo.email}`} className="btn btn-primary">
-              <EmailIcon />
-              Get In Touch
-            </a>
-            <a href={`${import.meta.env.BASE_URL}resume.pdf`} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
-              View Resume
-            </a>
+            <MagneticElement strength={0.4} radius={60}>
+              <a href={`mailto:${personalInfo.email}`} className="btn btn-primary">
+                <EmailIcon />
+                Get In Touch
+              </a>
+            </MagneticElement>
+            <MagneticElement strength={0.4} radius={60}>
+              <a href={`${import.meta.env.BASE_URL}resume.pdf`} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
+                View Resume
+              </a>
+            </MagneticElement>
           </div>
         </div>
 
@@ -120,18 +82,26 @@ export default function Footer() {
               and user-centric software solutions.
             </p>
             <div className="footer-social-links">
-              <a href={personalInfo.github} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                <GitHubIcon />
-              </a>
-              <a href={personalInfo.linkedin} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                <LinkedInIcon />
-              </a>
-              <a href={personalInfo.leetcode} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
-                <LeetCodeIcon />
-              </a>
-              <a href={`mailto:${personalInfo.email}`} className="footer-social-link" aria-label="Email">
-                <EmailIcon />
-              </a>
+              <MagneticElement strength={0.3} radius={40}>
+                <a href={personalInfo.github} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <GitHubIcon />
+                </a>
+              </MagneticElement>
+              <MagneticElement strength={0.3} radius={40}>
+                <a href={personalInfo.linkedin} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                  <LinkedInIcon />
+                </a>
+              </MagneticElement>
+              <MagneticElement strength={0.3} radius={40}>
+                <a href={personalInfo.leetcode} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                  <LeetCodeIcon />
+                </a>
+              </MagneticElement>
+              <MagneticElement strength={0.3} radius={40}>
+                <a href={`mailto:${personalInfo.email}`} className="footer-social-link" aria-label="Email">
+                  <EmailIcon />
+                </a>
+              </MagneticElement>
             </div>
           </div>
 

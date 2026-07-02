@@ -54,23 +54,29 @@ function ProjectCard({ project, index }) {
       target="_blank"
       rel="noopener noreferrer"
     >
-      <div className="project-header">
-        <div className="project-icon">
-          <FolderIcon />
+      <div 
+        className="project-card-bg"
+        style={{ backgroundImage: `url(${project.image})` }}
+      />
+      <div className="project-content" style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%', gap: '1rem' }}>
+        <div className="project-header">
+          <div className="project-icon">
+            <FolderIcon />
+          </div>
+          <div className="project-link-icon">
+            <ExternalLinkIcon />
+          </div>
         </div>
-        <div className="project-link-icon">
-          <ExternalLinkIcon />
+
+        <h3 className="project-title">{project.title}</h3>
+        <p className="project-subtitle">{project.subtitle}</p>
+        <p className="project-description">{project.description}</p>
+
+        <div className="project-tags">
+          {project.tech.map((t) => (
+            <span key={t} className="tag">{t}</span>
+          ))}
         </div>
-      </div>
-
-      <h3 className="project-title">{project.title}</h3>
-      <p className="project-subtitle">{project.subtitle}</p>
-      <p className="project-description">{project.description}</p>
-
-      <div className="project-tags">
-        {project.tech.map((t) => (
-          <span key={t} className="tag">{t}</span>
-        ))}
       </div>
     </a>
   );

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { achievements, certifications } from '../data';
 import { useScrollReveal } from '../hooks/useAnimations';
 
@@ -13,28 +14,16 @@ function AnimatedCounter({ target, suffix = '' }) {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimated.current) {
             hasAnimated.current = true;
-            let start = 0;
-            const duration = 2000;
-            const startTime = performance.now();
-
-            const animate = (currentTime) => {
-              const elapsed = currentTime - startTime;
-              const progress = Math.min(elapsed / duration, 1);
-
-              // Ease out quart
-              const eased = 1 - Math.pow(1 - progress, 4);
-              const current = Math.floor(eased * target);
-
-              setCount(current);
-
-              if (progress < 1) {
-                requestAnimationFrame(animate);
-              } else {
-                setCount(target);
+            
+            const obj = { val: 0 };
+            gsap.to(obj, {
+              val: target,
+              duration: 2,
+              ease: "back.out(1.7)",
+              onUpdate: () => {
+                setCount(Math.floor(obj.val));
               }
-            };
-
-            requestAnimationFrame(animate);
+            });
           }
         });
       },
@@ -86,25 +75,45 @@ export default function Achievements() {
           ))}
         </div>
 
-        <div className="certifications-list reveal">
+        <div className="certifications-grid reveal">
           <h3 style={{
             fontFamily: 'var(--font-display)',
             fontSize: 'var(--text-xl)',
             fontWeight: 600,
             color: 'var(--white)',
-            marginBottom: 'var(--space-sm)',
+            marginBottom: 'var(--space-md)',
+            gridColumn: '1 / -1'
           }}>
             Certifications
           </h3>
-          {certifications.map((cert) => (
-            <div
-              key={cert}
-              className="certification-item reveal"
-            >
-              <CheckIcon />
-              <span>{cert}</span>
-            </div>
-          ))}
+          {certifications.map((cert, i) => {
+            const CardTag = cert.link ? 'a' : 'div';
+            return (
+              <CardTag
+                key={i}
+                href={cert.link || undefined}
+                target={cert.link ? "_blank" : undefined}
+                rel={cert.link ? "noopener noreferrer" : undefined}
+                className="certification-card"
+              >
+                <div className="cert-card-icon">
+                  <CheckIcon />
+                </div>
+                <div className="cert-card-content">
+                  <h4 className="cert-title">{cert.title}</h4>
+                  <span className="cert-provider">{cert.provider}</span>
+                </div>
+                {cert.link && (
+                  <div className="cert-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="m12 5 7 7-7 7"></path>
+                    </svg>
+                  </div>
+                )}
+              </CardTag>
+            );
+          })}
         </div>
       </div>
     </section>

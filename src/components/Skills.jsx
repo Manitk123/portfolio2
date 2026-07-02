@@ -37,6 +37,31 @@ const skillIcons = {
   ),
 };
 
+function SkillCard({ skill }) {
+  return (
+    <div className="accordion-card">
+      <div className="accordion-card-inner">
+        <div className="accordion-header">
+          <div className="accordion-icon">
+            {skillIcons[skill.icon]}
+          </div>
+          <h3 className="accordion-title">{skill.category}</h3>
+        </div>
+
+        <div className="accordion-content">
+          <div className="accordion-items">
+            {skill.items.map((item) => (
+              <span key={item} className="accordion-item">{item}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+import FakeTerminal from './FakeTerminal';
+
 export default function Skills() {
   const sectionRef = useScrollReveal();
 
@@ -46,37 +71,13 @@ export default function Skills() {
         <span className="section-label reveal">What I Offer</span>
         <h2 className="section-title reveal">Technical Arsenal</h2>
 
-        <div className="skills-grid">
-          {skills.map((skill, index) => (
-            <div
-              key={skill.category}
-              className="skill-column reveal"
-            >
-              {/* 3D popup on hover (simple glow effect) */}
-              <div className="skill-3d-popup">
-                <div style={{
-                  width: 60,
-                  height: 60,
-                  borderRadius: '50%',
-                  background: 'radial-gradient(circle, rgba(178,196,138,0.3) 0%, transparent 70%)',
-                  filter: 'blur(4px)',
-                }} />
-              </div>
-
-              <div className="skill-column-icon">
-                {skillIcons[skill.icon]}
-              </div>
-
-              <h3 className="skill-column-title">{skill.category}</h3>
-
-              <div className="skill-column-items">
-                {skill.items.map((item) => (
-                  <span key={item} className="skill-item">{item}</span>
-                ))}
-              </div>
-            </div>
+        <div className="accordion-container reveal">
+          {skills.map((skill) => (
+            <SkillCard key={skill.category} skill={skill} />
           ))}
         </div>
+        
+        <FakeTerminal />
       </div>
     </section>
   );
