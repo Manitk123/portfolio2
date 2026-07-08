@@ -1,6 +1,7 @@
 import { personalInfo, summary, education } from '../data';
 import { useScrollReveal } from '../hooks/useAnimations';
 import TypewriterText from './TypewriterText';
+import AnimatedTitle from './AnimatedTitle';
 
 export default function About() {
   const sectionRef = useScrollReveal();
@@ -11,7 +12,7 @@ export default function About() {
     <section id="about" className="section about reveal" ref={sectionRef}>
       <div className="section-inner">
         <span className="section-label reveal">About Me</span>
-        <h2 className="section-title reveal">Know Me More</h2>
+        <AnimatedTitle text="Know Me More" className="section-title" />
 
         <div className="about-grid">
           <div className="about-image-container reveal">

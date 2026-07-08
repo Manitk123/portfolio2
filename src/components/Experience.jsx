@@ -1,91 +1,111 @@
 import { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { experience } from '../data';
-import { useScrollReveal } from '../hooks/useAnimations';
+import AnimatedTitle from './AnimatedTitle';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Experience() {
   const sectionRef = useRef(null);
-  const timelineFillRef = useRef(null);
+  const cardsRef = useRef([]);
 
   useEffect(() => {
-    // Animate timeline fill on scroll
-    const handleScroll = () => {
-      if (!sectionRef.current || !timelineFillRef.current) return;
+    const cards = cardsRef.current.filter(Boolean);
+    if (!cards.length) return;
 
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      const sectionHeight = rect.height;
+    const ctx = gsap.context(() => {
+      cards.forEach((card, i) => {
+        const isLeft = i % 2 === 0;
 
-      // Calculate how far we've scrolled through the section
-      const scrolled = (windowHeight - rect.top) / (sectionHeight + windowHeight);
-      const clampedScroll = Math.min(Math.max(scrolled, 0), 1);
+        gsap.fromTo(card,
+          {
+            x: isLeft ? -120 : 120,
+            y: 60,
+            opacity: 0,
+            scale: 0.85,
+            rotateZ: isLeft ? -3 : 3,
+          },
+          {
+            x: 0,
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            rotateZ: 0,
+            duration: 1,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 85%',
+              end: 'top 40%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
 
-      timelineFillRef.current.style.height = `${clampedScroll * 100}%`;
-    };
+        // Animate the trail line
+        const trail = card.querySelector('.exp-trail');
+        if (trail) {
+          gsap.fromTo(trail,
+            { scaleY: 0, transformOrigin: 'top center' },
+            {
+              scaleY: 1,
+              duration: 0.6,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: card,
+                start: 'top 80%',
+                toggleActions: 'play none none reverse',
+              },
+            }
+          );
+        }
+      });
+    }, sectionRef);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => ctx.revert();
   }, []);
-
-  const revealRef = useScrollReveal({ threshold: 0.2 });
-
-  // Generate floating particles
-  const particles = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100}%`,
-    duration: `${Math.random() * 15 + 10}s`,
-    drift: `${(Math.random() - 0.5) * 100}px`,
-    delay: `${Math.random() * 10}s`,
-    size: `${Math.random() * 2 + 1}px`,
-  }));
 
   return (
     <section className="section experience-section" id="experience" ref={sectionRef}>
-      {/* Floating particles background */}
-      <div className="particles-bg">
-        {particles.map((p) => (
-          <div
-            key={p.id}
-            className="particle"
-            style={{
-              left: p.left,
-              top: p.top,
-              width: p.size,
-              height: p.size,
-              '--duration': p.duration,
-              '--drift': p.drift,
-              animationDelay: p.delay,
-            }}
-          />
-        ))}
-      </div>
+      <div className="section-inner" style={{ position: 'relative', zIndex: 1 }}>
+        <div className="sticky-sidebar reveal">
+          <span className="section-label">Experience</span>
+          <AnimatedTitle text="Where I've Worked" className="section-title text-left" />
+          <p className="sticky-desc">A timeline of my professional journey, highlighting key roles, contributions, and the impact I've made along the way.</p>
+        </div>
+        <div className="sticky-content">
 
-      <div className="section-inner" ref={revealRef} style={{ position: 'relative', zIndex: 1 }}>
-        <span className="section-label reveal">Experience</span>
-        <h2 className="section-title reveal">Where I've Worked</h2>
-
-        <div className="experience-timeline">
-          <div className="experience-timeline-fill" ref={timelineFillRef} />
-
+        <div className="exp-zigzag">
           {experience.map((exp, index) => (
             <div
               key={exp.company}
-              className={`experience-card ${index % 2 === 0 ? 'reveal-left reveal' : 'reveal-right reveal'}`}
+              className={`exp-card-wrapper ${index % 2 === 0 ? 'exp-left' : 'exp-right'}`}
+              ref={(el) => { cardsRef.current[index] = el; }}
             >
-              <div className="experience-dot" />
-              <span className="experience-period">{exp.period}</span>
-              <h3 className="experience-role">{exp.role}</h3>
-              <p className="experience-company">{exp.company}</p>
-              <div className="experience-bullets">
-                {exp.bullets.map((bullet, i) => (
-                  <p key={i} className="experience-bullet">{bullet}</p>
-                ))}
+              {/* Connecting trail */}
+              {index > 0 && <div className="exp-trail" />}
+
+              <div className="exp-card">
+                {/* Engine glow */}
+                <div className="exp-glow" />
+
+                {/* Number badge */}
+                <div className="exp-badge">{String(index + 1).padStart(2, '0')}</div>
+
+                <span className="exp-period">{exp.period}</span>
+                <h3 className="exp-role">{exp.role}</h3>
+                <p className="exp-company">{exp.company}</p>
+                <div className="exp-bullets">
+                  {exp.bullets.map((bullet, i) => (
+                    <p key={i} className="exp-bullet">{bullet}</p>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

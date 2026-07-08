@@ -2,6 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { achievements, certifications } from '../data';
 import { useScrollReveal } from '../hooks/useAnimations';
+import AnimatedTitle from './AnimatedTitle';
+
+// Extra detail for flip card backs
+const achievementDetails = {
+  'LeetCode Problems': 'Top percentile globally — consistent daily practice',
+  'Projects Built': 'From SaaS platforms to security research tools',
+  'Internships': 'UI/UX Design + Full-Stack Software Development',
+};
 
 function AnimatedCounter({ target, suffix = '' }) {
   const [count, setCount] = useState(0);
@@ -14,15 +22,15 @@ function AnimatedCounter({ target, suffix = '' }) {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !hasAnimated.current) {
             hasAnimated.current = true;
-            
+
             const obj = { val: 0 };
             gsap.to(obj, {
               val: target,
               duration: 2,
-              ease: "back.out(1.7)",
+              ease: 'back.out(1.7)',
               onUpdate: () => {
                 setCount(Math.floor(obj.val));
-              }
+              },
             });
           }
         });
@@ -44,6 +52,40 @@ function AnimatedCounter({ target, suffix = '' }) {
   );
 }
 
+function FlipCard({ item }) {
+  const [flipped, setFlipped] = useState(false);
+
+  return (
+    <div
+      className={`flip-card ${flipped ? 'flipped' : ''}`}
+      onClick={() => setFlipped(!flipped)}
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+    >
+      <div className="flip-card-inner">
+        {/* Back = default visible (number + label) */}
+        <div className="flip-card-back">
+          <div className="flip-card-border-anim" />
+          <div className="flip-card-back-content">
+            <AnimatedCounter target={item.value} suffix={item.suffix} />
+            <p className="achievement-label">{item.label}</p>
+          </div>
+        </div>
+
+        {/* Front = revealed on hover/tap */}
+        <div className="flip-card-front">
+          <div className="flip-card-front-content">
+            <p className="flip-card-detail">
+              {achievementDetails[item.label] || item.label}
+            </p>
+            <span className="flip-card-cta">Click to flip back</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // Badge/checkmark icon
 function CheckIcon() {
   return (
@@ -61,59 +103,48 @@ export default function Achievements() {
     <section className="section achievements-section reveal" id="achievements" ref={sectionRef}>
       <div className="section-inner">
         <span className="section-label reveal">Achievements</span>
-        <h2 className="section-title reveal">By The Numbers</h2>
+        <AnimatedTitle text="By The Numbers" className="section-title" />
 
         <div className="achievements-grid">
           {achievements.map((item) => (
-            <div
-              key={item.label}
-              className="achievement-card reveal"
-            >
-              <AnimatedCounter target={item.value} suffix={item.suffix} />
-              <p className="achievement-label">{item.label}</p>
-            </div>
+            <FlipCard key={item.label} item={item} />
           ))}
         </div>
 
-        <div className="certifications-grid reveal">
-          <h3 style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'var(--text-xl)',
-            fontWeight: 600,
-            color: 'var(--white)',
-            marginBottom: 'var(--space-md)',
-            gridColumn: '1 / -1'
-          }}>
-            Certifications
-          </h3>
-          {certifications.map((cert, i) => {
-            const CardTag = cert.link ? 'a' : 'div';
-            return (
-              <CardTag
-                key={i}
-                href={cert.link || undefined}
-                target={cert.link ? "_blank" : undefined}
-                rel={cert.link ? "noopener noreferrer" : undefined}
-                className="certification-card"
-              >
-                <div className="cert-card-icon">
-                  <CheckIcon />
-                </div>
-                <div className="cert-card-content">
-                  <h4 className="cert-title">{cert.title}</h4>
-                  <span className="cert-provider">{cert.provider}</span>
-                </div>
-                {cert.link && (
-                  <div className="cert-arrow">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M5 12h14"></path>
-                      <path d="m12 5 7 7-7 7"></path>
-                    </svg>
+        <div className="certifications-area reveal">
+          <h3 className="certifications-heading">Certifications</h3>
+          <div className="certifications-grid">
+            {certifications.map((cert, i) => {
+              const CardTag = cert.link ? 'a' : 'div';
+              return (
+                <CardTag
+                  key={i}
+                  href={cert.link || undefined}
+                  target={cert.link ? '_blank' : undefined}
+                  rel={cert.link ? 'noopener noreferrer' : undefined}
+                  className="cert-glow-card"
+                >
+                  <div className="cert-glow-card-inner">
+                    <div className="cert-glow-icon">
+                      <CheckIcon />
+                    </div>
+                    <div className="cert-glow-content">
+                      <h4 className="cert-glow-title">{cert.title}</h4>
+                      <span className="cert-glow-provider">{cert.provider}</span>
+                    </div>
+                    {cert.link && (
+                      <div className="cert-glow-arrow">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14" />
+                          <path d="m12 5 7 7-7 7" />
+                        </svg>
+                      </div>
+                    )}
                   </div>
-                )}
-              </CardTag>
-            );
-          })}
+                </CardTag>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

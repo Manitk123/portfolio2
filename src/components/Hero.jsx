@@ -1,17 +1,9 @@
 import { useEffect, useRef } from 'react';
-import { personalInfo, navLinks } from '../data';
-import HeroScene from './HeroScene';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { personalInfo } from '../data';
 
-// SVG Starburst component
-function Starburst() {
-  return (
-    <div className="hero-starburst">
-      <svg viewBox="0 0 40 40" fill="currentColor">
-        <path d="M20 0l2.5 15.5L40 20l-17.5 2.5L20 40l-2.5-17.5L0 20l17.5-4.5z" />
-      </svg>
-    </div>
-  );
-}
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -19,63 +11,87 @@ export default function Hero() {
   const titleRef = useRef(null);
 
   useEffect(() => {
-    // Parallax fade effect on scroll
-    const handleScroll = () => {
-      if (!heroRef.current) return;
-      const scrollY = window.scrollY;
-      const fadeRatio = Math.max(1 - scrollY / 700, 0);
-      
-      const content = heroRef.current.querySelector('.hero-content');
-      const canvas = heroRef.current.querySelector('.hero-canvas');
-      const indicator = heroRef.current.querySelector('.hero-scroll-indicator');
-      
-      if (content) content.style.opacity = fadeRatio;
-      if (canvas) canvas.style.opacity = fadeRatio;
-      if (indicator) indicator.style.opacity = fadeRatio * fadeRatio; // fade faster
+    if (!heroRef.current || !nameRef.current) return;
+
+    // Split text logic is handled in the render via mapping over characters
+    const charInners = heroRef.current.querySelectorAll('.hero-char-inner');
+    const charWrappers = heroRef.current.querySelectorAll('.hero-char-wrapper');
+    const titleInners = heroRef.current.querySelectorAll('.hero-title-inner');
+    const titleWrappers = heroRef.current.querySelectorAll('.hero-title-wrapper');
+
+    // 1. Entrance animation (from left, character by character)
+    gsap.set(charInners, { x: -300, opacity: 0, filter: 'blur(10px)' });
+    gsap.set(titleInners, { x: -300, opacity: 0, filter: 'blur(10px)' });
+
+    const tl = gsap.timeline();
+
+    tl.to(charInners, {
+      x: 0,
+      opacity: 1,
+      filter: 'blur(0px)',
+      stagger: 0.05,
+      duration: 1.2,
+      ease: 'back.out(1.2)'
+    }).to(titleInners, {
+      x: 0,
+      opacity: 1,
+      filter: 'blur(0px)',
+      stagger: 0.02,
+      duration: 1.2,
+      ease: 'back.out(1.2)'
+    }, "-=0.8");
+
+    // 2. Scroll animation (moves right, character by character on scroll)
+    const st = ScrollTrigger.create({
+      trigger: heroRef.current,
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1,
+      animation: gsap.to([charWrappers, titleWrappers], {
+        x: 500, // Move to the right
+        opacity: 0,
+        filter: 'blur(20px)',
+        stagger: 0.01,
+        ease: 'power1.inOut'
+      })
+    });
+
+    return () => {
+      tl.kill();
+      st.kill();
     };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    // Animate name lines appearing
-    const nameLines = nameRef.current?.querySelectorAll('.hero-name-line');
-    if (nameLines) {
-      nameLines.forEach((line, i) => {
-        setTimeout(() => {
-          line.style.transform = 'translateY(0)';
-          line.style.opacity = '1';
-          line.style.transition = `all 1s cubic-bezier(0.16, 1, 0.3, 1) ${i * 0.15}s`;
-        }, 800 + i * 200);
-      });
-    }
-
-    // Animate title
-    if (titleRef.current) {
-      setTimeout(() => {
-        titleRef.current.style.opacity = '1';
-        titleRef.current.style.transform = 'translateY(0)';
-        titleRef.current.style.transition = 'all 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
-      }, 1400);
-    }
   }, []);
 
+  const fullName = `${personalInfo.firstName} ${personalInfo.lastName}`;
+
   return (
-    <section className="hero grid-bg" id="home" ref={heroRef}>
-      <HeroScene />
-
-      <Starburst />
-
+    <section className="hero" id="home" ref={heroRef} style={{ overflow: 'hidden' }}>
       <div className="hero-content">
         <h1 className="hero-name" ref={nameRef}>
-          <span className="hero-name-line">{personalInfo.firstName}</span>
-          <span className="hero-name-line">{personalInfo.lastName}</span>
+          {fullName.split('').map((char, i) => (
+            <span
+              key={i}
+              className="hero-char-wrapper"
+              style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+            >
+              <span className="hero-char-inner" style={{ display: 'inline-block' }}>
+                {char === ' ' ? ' ' : char}
+              </span>
+            </span>
+          ))}
         </h1>
-        <p
-          className="hero-title"
-          ref={titleRef}
-          style={{ transform: 'translateY(20px)' }}
-        >
-          {personalInfo.tagline}
+        <p className="hero-title" ref={titleRef}>
+          {personalInfo.tagline.split('').map((char, i) => (
+            <span
+              key={i}
+              className="hero-title-wrapper"
+              style={{ display: 'inline-block', whiteSpace: char === ' ' ? 'pre' : 'normal' }}
+            >
+              <span className="hero-title-inner" style={{ display: 'inline-block' }}>
+                {char === ' ' ? ' ' : char}
+              </span>
+            </span>
+          ))}
         </p>
       </div>
 
