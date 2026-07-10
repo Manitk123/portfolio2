@@ -1318,16 +1318,18 @@ button {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   will-change: transform, opacity;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(0, 0, 0, 0.05);
   border-radius: var(--radius-lg);
   padding: var(--space-md);
   z-index: 2;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease-in;
 }
 
 .exp-card:hover {
   border-color: var(--sage);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  translate: 0 -1.5rem;
+  border-radius: 2.5rem 0 2.5rem 0;
 }
 
 .exp-glow {
@@ -1440,7 +1442,19 @@ button {
 
 @media (max-width: 768px) {
   .exp-card-wrapper { justify-content: flex-start; }
-  .exp-card { width: 90%; margin-left: 20px; }
+  .exp-card {
+  position: relative;
+  width: 45%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  will-change: transform, opacity;
+  border: 2px solid rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  z-index: 2;
+  transition: all 0.4s ease-in;
+}
   .exp-badge { left: -20px !important; right: auto !important; }
   .exp-trail { left: 0 !important; right: auto !important; height: calc(100% + var(--space-lg)); top: 0; }
 }
