@@ -91,7 +91,7 @@ export default function Nav() {
         ))}
         <MagneticElement strength={0.3} radius={40}>
           <a
-            href={`${import.meta.env.BASE_URL}resume.pdf`}
+            href={`${import.meta.env.BASE_URL}Manit_resume_SD.pdf`}
             className="nav-resume-btn"
             target="_blank"
             rel="noopener noreferrer"

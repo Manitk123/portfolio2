@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { achievements, certifications } from '../data';
 import { useScrollReveal } from '../hooks/useAnimations';
 import AnimatedTitle from './AnimatedTitle';
+
+gsap.registerPlugin(ScrollTrigger);
 
 // Extra detail for flip card backs
 const achievementDetails = {
@@ -98,6 +101,40 @@ function CheckIcon() {
 
 export default function Achievements() {
   const sectionRef = useScrollReveal();
+  const certCardsRef = useRef([]);
+
+  useEffect(() => {
+    const cards = certCardsRef.current.filter(Boolean);
+    if (!cards.length) return;
+
+    const ctx = gsap.context(() => {
+      cards.forEach((card, i) => {
+        const isLeft = i % 2 === 0;
+
+        gsap.fromTo(card,
+          {
+            x: isLeft ? -100 : 100,
+            opacity: 0,
+            scale: 0.9,
+          },
+          {
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 90%',
+              toggleActions: 'play none none reverse',
+            },
+          }
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [sectionRef]);
 
   return (
     <section className="section achievements-section reveal" id="achievements" ref={sectionRef}>
@@ -123,6 +160,7 @@ export default function Achievements() {
                   target={cert.link ? '_blank' : undefined}
                   rel={cert.link ? 'noopener noreferrer' : undefined}
                   className="cert-glow-card"
+                  ref={(el) => { certCardsRef.current[i] = el; }}
                 >
                   <div className="cert-glow-card-inner">
                     <div className="cert-glow-icon">

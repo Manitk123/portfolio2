@@ -45,11 +45,7 @@ export default function Footer() {
       <div className="section-inner footer-inner">
         {/* CTA Area */}
         <div className="footer-cta reveal">
-          <div className="footer-cta-bg">
-            <div className="footer-orb orb-1"></div>
-            <div className="footer-orb orb-2"></div>
-            <div className="footer-orb orb-3"></div>
-          </div>
+
 
           <h2 className="footer-cta-text">
             Let's Build Something<br />
@@ -64,81 +60,79 @@ export default function Footer() {
               </a>
             </MagneticElement>
             <MagneticElement strength={0.4} radius={60}>
-              <a href={`${import.meta.env.BASE_URL}resume.pdf`} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
+              <a href={`${import.meta.env.BASE_URL}Manit_resume_SD.pdf`} className="btn btn-outline" target="_blank" rel="noopener noreferrer">
                 View Resume
               </a>
             </MagneticElement>
           </div>
         </div>
 
-        <div className="footer-divider" />
+      </div>
 
-        {/* Footer Bottom */}
-        <div className="footer-bottom reveal">
-          <div className="footer-brand">
-            <span className="footer-brand-logo">MK.</span>
-            <p className="footer-brand-text">
-              Aspiring Software Developer passionate about building secure, efficient,
-              and user-centric software solutions.
-            </p>
-            <div className="footer-social-links">
-              <MagneticElement strength={0.3} radius={40}>
-                <a href={personalInfo.github} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <div className="footer-divider" style={{ display: 'none' }} />
+
+      {/* Footer Content Card - Full Width */}
+      <div className="footer-card reveal" style={{ borderRadius: 0, borderLeft: 'none', borderRight: 'none', marginBottom: 0, borderBottom: 'none' }}>
+        <div className="section-inner">
+          <div className="footer-bottom">
+            <div className="footer-brand">
+              <span className="footer-brand-logo">MK.</span>
+              <p className="footer-brand-text">
+                Aspiring Software Developer passionate about building secure, efficient,
+                and user-centric software solutions.
+              </p>
+              <div className="social-hover-card">
+                <span>Social</span>
+                <a href={personalInfo.github} className="social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                   <GitHubIcon />
                 </a>
-              </MagneticElement>
-              <MagneticElement strength={0.3} radius={40}>
-                <a href={personalInfo.linkedin} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <a href={personalInfo.linkedin} className="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <LinkedInIcon />
                 </a>
-              </MagneticElement>
-              <MagneticElement strength={0.3} radius={40}>
-                <a href={personalInfo.leetcode} className="footer-social-link" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
+                <a href={personalInfo.leetcode} className="social-link" target="_blank" rel="noopener noreferrer" aria-label="LeetCode">
                   <LeetCodeIcon />
                 </a>
-              </MagneticElement>
-              <MagneticElement strength={0.3} radius={40}>
-                <a href={`mailto:${personalInfo.email}`} className="footer-social-link" aria-label="Email">
+                <a href={`mailto:${personalInfo.email}`} className="social-link" aria-label="Email">
                   <EmailIcon />
                 </a>
-              </MagneticElement>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="footer-column-title">Navigate</h4>
+              <div className="footer-column-links">
+                {navLinks.map((link) => (
+                  <a key={link.label} href={link.href} className="footer-column-link">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h4 className="footer-column-title">Projects</h4>
+              <div className="footer-column-links">
+                <a href="#" className="footer-column-link">Detonate Bot</a>
+                <a href="#" className="footer-column-link">HIDS Framework</a>
+                <a href="#" className="footer-column-link">Nirbhaya</a>
+                <a href="#" className="footer-column-link">CaBU</a>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="footer-column-title">Connect</h4>
+              <div className="footer-column-links">
+                <a href={personalInfo.github} className="footer-column-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href={personalInfo.linkedin} className="footer-column-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href={personalInfo.leetcode} className="footer-column-link" target="_blank" rel="noopener noreferrer">LeetCode</a>
+                <a href={`mailto:${personalInfo.email}`} className="footer-column-link">Email</a>
+              </div>
             </div>
           </div>
 
-          <div>
-            <h4 className="footer-column-title">Navigate</h4>
-            <div className="footer-column-links">
-              {navLinks.map((link) => (
-                <a key={link.label} href={link.href} className="footer-column-link">
-                  {link.label}
-                </a>
-              ))}
-            </div>
+          <div className="footer-copyright">
+            <p>© {new Date().getFullYear()} Manit Kumar. Designed & Built with ❤</p>
           </div>
-
-          <div>
-            <h4 className="footer-column-title">Projects</h4>
-            <div className="footer-column-links">
-              <a href="#" className="footer-column-link">Detonate Bot</a>
-              <a href="#" className="footer-column-link">HIDS Framework</a>
-              <a href="#" className="footer-column-link">Nirbhaya</a>
-              <a href="#" className="footer-column-link">CaBU</a>
-            </div>
-          </div>
-
-          <div>
-            <h4 className="footer-column-title">Connect</h4>
-            <div className="footer-column-links">
-              <a href={personalInfo.github} className="footer-column-link" target="_blank" rel="noopener noreferrer">GitHub</a>
-              <a href={personalInfo.linkedin} className="footer-column-link" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-              <a href={personalInfo.leetcode} className="footer-column-link" target="_blank" rel="noopener noreferrer">LeetCode</a>
-              <a href={`mailto:${personalInfo.email}`} className="footer-column-link">Email</a>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-copyright">
-          <p>© {new Date().getFullYear()} Manit Kumar. Designed & Built with ❤</p>
         </div>
       </div>
     </section>
