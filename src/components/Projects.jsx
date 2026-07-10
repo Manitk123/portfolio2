@@ -132,8 +132,7 @@ export default function Projects() {
                   }}
                 >
                   <div className="carousel-card-graphic">
-                    <div className="graphic-layer grid-layer" />
-                    <div className="graphic-layer orb-layer" />
+                    <div className="carousel-card-pattern" />
                   </div>
                   <div className="carousel-card-overlay" />
                   <div className="carousel-card-content">
