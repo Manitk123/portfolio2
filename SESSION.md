@@ -1,18 +1,17 @@
 # Portfolio p1 - Session Context
 
-## Recent Work (2026-07-08)
-- Added GSAP character-by-character entrance and scrub animations to the Hero section (Name and Tagline).
-- Fixed the overlapping issues with the 3D Carousel Navigation dots by increasing the container height.
-- Shifted the Skills Rotary wheel downwards to improve spacing.
-- Made the Contact/Footer section background transparent to blend seamlessly with the main animated starry background.
-- Fixed MS Edge animation jank and disappearance bugs by optimizing `filter: blur` and adding `will-change: transform`.
-- Fixed mobile layout issues: corrected about-image aspect ratio/object-position and fixed rotary wheel centering margins.
+## Recent Work (2026-07-10)
+- Upgraded Project Cards to a clean, minimalist frosted glass design with dynamic hover scaling and rotation.
+- Extended the Footer component to follow a full-bleed design, stretching seamlessly to the edges of the screen.
+- Enhanced the Experience ("Where I've Worked") cards with an asymmetric shape-shifting border-radius and smooth hover translation effect that integrates cleanly with existing GSAP scrolling animations.
+- Fixed a strict syntax error from a dangling CSS selector that was causing Vite/lightningcss build failures in production.
 
 ## Savepoints
 - **[P02-SP01]**: Bento Redesign Layout
 - **[P02-SP02]**: UI Polish, Text Animations, and Bug Fixes
 - **[P02-SP03]**: MS Edge Animation Bug Fixes
-- **[P02-SP04]**: Mobile UI Layout Bug Fixes (Current)
+- **[P02-SP04]**: Mobile UI Layout Bug Fixes
+- **[P02-SP05]**: Project/Experience Card Polish & Full-Bleed Footer (Current)
 
 ## Error Check & Verification
 - Build: `npm run build` completed successfully.

@@ -5,7 +5,7 @@
 #              for ALL projects. Read this FIRST at the start of every session.
 # ═══════════════════════════════════════════════════════════════════════════════
 
----
+| 2026-07-10 | P02     | UI Component Polish (Cards, Footer) | SP05      | Success  |\n---
 
 ## ⚙️ MANDATORY AGENT BEHAVIOUR (Every Session, Every Project)
 
@@ -63,6 +63,13 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
   - CSS is centralized in `index.css`
   - Uses Framer Motion and GSAP for animations
 
+
+#### [P02-SP05] — Project/Experience Card Polish & Full-Bleed Footer (2026-07-10)
+- **Description**: Upgraded Project Cards to minimalist frosted glass with hover scaling. Enhanced Experience cards with asymmetric shape-shifting and translate hovers. Extended Footer to full-bleed. Fixed Vite build error.
+- **Changed files**:
+  - src/components/Projects.jsx, src/components/Footer.jsx, src/index.css
+- **Revert**: Run git reset --hard HEAD and git clean -fd if uncommitted, or git revert <commit-hash> if committed.
+
 <!-- TEMPLATE — copy & fill when adding a new project
 ### [P0X] Project Name
 - **Root**: `C:\Users\manit\OneDrive\Desktop\MANIT\projects\...`
@@ -116,6 +123,13 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
 - **Changed files**:
   - `src/index.css`
 - **Revert**: Run `git reset --hard HEAD` and `git clean -fd` if uncommitted, or `git revert <commit-hash>` if committed.
+
+
+#### [P02-SP05] — Project/Experience Card Polish & Full-Bleed Footer (2026-07-10)
+- **Description**: Upgraded Project Cards to minimalist frosted glass with hover scaling. Enhanced Experience cards with asymmetric shape-shifting and translate hovers. Extended Footer to full-bleed. Fixed Vite build error.
+- **Changed files**:
+  - src/components/Projects.jsx, src/components/Footer.jsx, src/index.css
+- **Revert**: Run git reset --hard HEAD and git clean -fd if uncommitted, or git revert <commit-hash> if committed.
 
 <!-- TEMPLATE
 #### [PXX-SPYY] — Name (YYYY-MM-DD)
