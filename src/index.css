@@ -2346,8 +2346,30 @@ button {
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
-  background: var(--charcoal-deep);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.global-border-anim {
+  position: absolute;
+  width: 300vmax; 
+  height: 300vmax;
+  background: linear-gradient(90deg, transparent, var(--sage), var(--forest), var(--teal), transparent);
+  animation: rotation_481 8s infinite linear;
+  z-index: 0;
+}
+
+.global-border-overlay {
+  position: absolute;
+  inset: 4px; /* The thickness of the global animated border */
+  background-color: var(--charcoal-deep);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  z-index: 1;
+}
+
 .global-mesh, .global-particles {
   position: absolute !important;
   inset: 0;
