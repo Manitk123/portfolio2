@@ -131,10 +131,7 @@ export default function Projects() {
                     if (Math.abs(dragOffset) > 5) e.preventDefault();
                   }}
                 >
-                  <div className="carousel-card-graphic">
-                    <div className="carousel-card-pattern" />
-                  </div>
-                  <div className="carousel-card-overlay" />
+
                   <div className="carousel-card-content">
                     <div className="carousel-card-top">
                       <span className="carousel-card-subtitle">{project.subtitle}</span>
