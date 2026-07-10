@@ -1317,6 +1317,8 @@ button {
   width: 45%;
   background: rgba(20, 25, 35, 0.6);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  will-change: transform, opacity;
   border: 1px solid rgba(144, 224, 239, 0.15);
   border-radius: var(--radius-lg);
   padding: var(--space-md);

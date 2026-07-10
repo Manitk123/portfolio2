@@ -17,7 +17,8 @@ export default function AnimatedTitle({ text, className = "", as: Component = "h
       opacity: 0,
       y: 40,
       scale: 1.2,
-      filter: 'blur(10px)'
+      filter: 'blur(10px)',
+      willChange: 'opacity, transform, filter'
     });
 
     const st = ScrollTrigger.create({
@@ -28,11 +29,12 @@ export default function AnimatedTitle({ text, className = "", as: Component = "h
           opacity: 1,
           y: 0,
           scale: 1,
-          filter: 'blur(0px)',
+          filter: 'blur(0.1px)', // Edge fix: don't animate exactly to 0px
           duration: 0.8,
           stagger: 0.03,
           ease: 'power3.out',
-          overwrite: 'auto'
+          overwrite: 'auto',
+          onComplete: () => gsap.set(chars, { clearProps: 'filter,willChange' })
         });
       },
       once: true

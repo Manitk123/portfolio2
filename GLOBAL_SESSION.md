@@ -105,6 +105,12 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
   - `src/components/Hero.jsx`, `src/components/Footer.jsx`, `src/index.css`
 - **Revert**: Run `git reset --hard HEAD` and `git clean -fd` if uncommitted, or `git revert <commit-hash>` if committed.
 
+#### [P02-SP03] — MS Edge Animation Bug Fixes (2026-07-10)
+- **Description**: Fixed GSAP filter animation vanishing bug and dropped frames in MS Edge by removing absolute 0px blurs and forcing GPU layer with `will-change: transform`.
+- **Changed files**:
+  - `src/components/AnimatedTitle.jsx`, `src/components/Experience.jsx`, `src/components/Hero.jsx`, `src/index.css`
+- **Revert**: Run `git reset --hard HEAD` and `git clean -fd` if uncommitted, or `git revert <commit-hash>` if committed.
+
 <!-- TEMPLATE
 #### [PXX-SPYY] — Name (YYYY-MM-DD)
 - **Description**: What was done
@@ -125,6 +131,7 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
 | 2026-07-08 | P01     | Session system setup          | SP00      | Success  |
 | 2026-07-08 | P02     | Major Portfolio UI Overhaul   | SP00      | Success  |
 | 2026-07-08 | P02     | Bento Grid Architecture       | SP01      | Success  |
+| 2026-07-10 | P02     | MS Edge Animation Bug Fixes   | SP03      | Success  |
 
 ---
 
@@ -135,6 +142,7 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
 | 2026-07-08 | P01     | Session file setup | —      | No code changed — N/A         |
 | 2026-07-08 | P02     | UI Overhaul        | oxlint | Passed (fixed 1 warning)      |
 | 2026-07-08 | P02     | Bento Architecture | vite   | Build passed                  |
+| 2026-07-10 | P02     | Edge Animation Fix | vite   | Build passed                  |
 
 ---
 
@@ -192,6 +200,7 @@ These rules apply across ALL projects at all times.
 | 2026-07-08 | P02 (Portfolio) UI overhaul implemented: rotary dial, 3D carousel, flip cards.    |
 | 2026-07-08 | P02 (Portfolio) Refactored to Bento Box and Asymmetric layout architecture.       |
 | 2026-07-08 | P02 (Portfolio) User rejected Bento layout; reverted back to [P02-SP01] baseline. |
+| 2026-07-10 | P02 (Portfolio) Fixed MS Edge rendering bugs causing animations to disappear.     |
 
 ---
 

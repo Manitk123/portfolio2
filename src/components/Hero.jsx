@@ -28,17 +28,19 @@ export default function Hero() {
     tl.to(charInners, {
       x: 0,
       opacity: 1,
-      filter: 'blur(0px)',
+      filter: 'blur(0.1px)', // Edge fix
       stagger: 0.05,
       duration: 1.2,
-      ease: 'back.out(1.2)'
+      ease: 'back.out(1.2)',
+      onComplete: () => gsap.set(charInners, { clearProps: 'filter' })
     }).to(titleInners, {
       x: 0,
       opacity: 1,
-      filter: 'blur(0px)',
+      filter: 'blur(0.1px)', // Edge fix
       stagger: 0.02,
       duration: 1.2,
-      ease: 'back.out(1.2)'
+      ease: 'back.out(1.2)',
+      onComplete: () => gsap.set(titleInners, { clearProps: 'filter' })
     }, "-=0.8");
 
     // 2. Scroll animation (moves right, character by character on scroll)

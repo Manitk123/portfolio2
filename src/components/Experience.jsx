@@ -24,14 +24,14 @@ export default function Experience() {
             y: 60,
             opacity: 0,
             scale: 0.85,
-            rotateZ: isLeft ? -3 : 3,
+            rotation: isLeft ? -3 : 3, // Changed from rotateZ to rotation for Edge compat
           },
           {
             x: 0,
             y: 0,
             opacity: 1,
             scale: 1,
-            rotateZ: 0,
+            rotation: 0,
             duration: 1,
             ease: 'power3.out',
             scrollTrigger: {

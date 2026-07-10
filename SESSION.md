@@ -5,10 +5,12 @@
 - Fixed the overlapping issues with the 3D Carousel Navigation dots by increasing the container height.
 - Shifted the Skills Rotary wheel downwards to improve spacing.
 - Made the Contact/Footer section background transparent to blend seamlessly with the main animated starry background.
+- Fixed MS Edge animation jank and disappearance bugs by optimizing `filter: blur` and adding `will-change: transform`.
 
 ## Savepoints
 - **[P02-SP01]**: Bento Redesign Layout
-- **[P02-SP02]**: UI Polish, Text Animations, and Bug Fixes (Current)
+- **[P02-SP02]**: UI Polish, Text Animations, and Bug Fixes
+- **[P02-SP03]**: MS Edge Animation Bug Fixes (Current)
 
 ## Error Check & Verification
 - Build: `npm run build` completed successfully.
