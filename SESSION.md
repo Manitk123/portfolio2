@@ -6,11 +6,13 @@
 - Shifted the Skills Rotary wheel downwards to improve spacing.
 - Made the Contact/Footer section background transparent to blend seamlessly with the main animated starry background.
 - Fixed MS Edge animation jank and disappearance bugs by optimizing `filter: blur` and adding `will-change: transform`.
+- Fixed mobile layout issues: corrected about-image aspect ratio/object-position and fixed rotary wheel centering margins.
 
 ## Savepoints
 - **[P02-SP01]**: Bento Redesign Layout
 - **[P02-SP02]**: UI Polish, Text Animations, and Bug Fixes
-- **[P02-SP03]**: MS Edge Animation Bug Fixes (Current)
+- **[P02-SP03]**: MS Edge Animation Bug Fixes
+- **[P02-SP04]**: Mobile UI Layout Bug Fixes (Current)
 
 ## Error Check & Verification
 - Build: `npm run build` completed successfully.

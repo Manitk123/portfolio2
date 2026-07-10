@@ -111,6 +111,12 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
   - `src/components/AnimatedTitle.jsx`, `src/components/Experience.jsx`, `src/components/Hero.jsx`, `src/index.css`
 - **Revert**: Run `git reset --hard HEAD` and `git clean -fd` if uncommitted, or `git revert <commit-hash>` if committed.
 
+#### [P02-SP04] — Mobile UI Layout Bug Fixes (2026-07-10)
+- **Description**: Fixed mobile layout bugs where the about profile image was awkwardly cropped, and the rotary skills dial was misaligned due to incorrect negative margins.
+- **Changed files**:
+  - `src/index.css`
+- **Revert**: Run `git reset --hard HEAD` and `git clean -fd` if uncommitted, or `git revert <commit-hash>` if committed.
+
 <!-- TEMPLATE
 #### [PXX-SPYY] — Name (YYYY-MM-DD)
 - **Description**: What was done
@@ -132,6 +138,7 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
 | 2026-07-08 | P02     | Major Portfolio UI Overhaul   | SP00      | Success  |
 | 2026-07-08 | P02     | Bento Grid Architecture       | SP01      | Success  |
 | 2026-07-10 | P02     | MS Edge Animation Bug Fixes   | SP03      | Success  |
+| 2026-07-10 | P02     | Mobile UI Layout Bug Fixes    | SP04      | Success  |
 
 ---
 
@@ -143,6 +150,7 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
 | 2026-07-08 | P02     | UI Overhaul        | oxlint | Passed (fixed 1 warning)      |
 | 2026-07-08 | P02     | Bento Architecture | vite   | Build passed                  |
 | 2026-07-10 | P02     | Edge Animation Fix | vite   | Build passed                  |
+| 2026-07-10 | P02     | Mobile Layout Fix  | vite   | Build passed                  |
 
 ---
 
@@ -201,6 +209,7 @@ These rules apply across ALL projects at all times.
 | 2026-07-08 | P02 (Portfolio) Refactored to Bento Box and Asymmetric layout architecture.       |
 | 2026-07-08 | P02 (Portfolio) User rejected Bento layout; reverted back to [P02-SP01] baseline. |
 | 2026-07-10 | P02 (Portfolio) Fixed MS Edge rendering bugs causing animations to disappear.     |
+| 2026-07-10 | P02 (Portfolio) Fixed mobile layout bugs for profile image and skills wheel.      |
 
 ---
 
