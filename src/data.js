@@ -219,245 +219,245 @@ export const designs = [
     "title": "Alumni Dropdown",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Alumni Dropdown.png",
+    "image": "/assets/Syinq/Alumni Dropdown.png",
     "link": "#"
   },
   {
     "title": "Alumni profile dropdown",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Alumni profile dropdown.png",
+    "image": "/assets/Syinq/Alumni profile dropdown.png",
     "link": "#"
   },
   {
     "title": "Alumni profile",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Alumni profile.png",
+    "image": "/assets/Syinq/Alumni profile.png",
     "link": "#"
   },
   {
     "title": "Alumni",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Alumni.png",
+    "image": "/assets/Syinq/Alumni.png",
     "link": "#"
   },
   {
     "title": "Commute Basics",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Commute Basics.png",
+    "image": "/assets/Syinq/Commute Basics.png",
     "link": "#"
   },
   {
     "title": "end ride",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/end ride.png",
+    "image": "/assets/Syinq/end ride.png",
     "link": "#"
   },
   {
     "title": "Faculty profile",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Faculty profile.png",
+    "image": "/assets/Syinq/Faculty profile.png",
     "link": "#"
   },
   {
     "title": "offered ride empty",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/offered ride empty.png",
+    "image": "/assets/Syinq/offered ride empty.png",
     "link": "#"
   },
   {
     "title": "offered ride full",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/offered ride full.png",
+    "image": "/assets/Syinq/offered ride full.png",
     "link": "#"
   },
   {
     "title": "offered ride otp",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/offered ride otp.png",
+    "image": "/assets/Syinq/offered ride otp.png",
     "link": "#"
   },
   {
     "title": "offered ride",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/offered ride.png",
+    "image": "/assets/Syinq/offered ride.png",
     "link": "#"
   },
   {
     "title": "profile",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/profile.png",
+    "image": "/assets/Syinq/profile.png",
     "link": "#"
   },
   {
     "title": "register number toggled",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/register number toggled.png",
+    "image": "/assets/Syinq/register number toggled.png",
     "link": "#"
   },
   {
     "title": "register number",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/register number.png",
+    "image": "/assets/Syinq/register number.png",
     "link": "#"
   },
   {
     "title": "Requested ride accepted",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Requested ride accepted.png",
+    "image": "/assets/Syinq/Requested ride accepted.png",
     "link": "#"
   },
   {
     "title": "requested ride empty",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/requested ride empty.png",
+    "image": "/assets/Syinq/requested ride empty.png",
     "link": "#"
   },
   {
     "title": "Requested ride otp",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Requested ride otp.png",
+    "image": "/assets/Syinq/Requested ride otp.png",
     "link": "#"
   },
   {
     "title": "Requested ride",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Requested ride.png",
+    "image": "/assets/Syinq/Requested ride.png",
     "link": "#"
   },
   {
     "title": "Role",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Role.png",
+    "image": "/assets/Syinq/Role.png",
     "link": "#"
   },
   {
     "title": "Staff Details Dropdown",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Staff Details Dropdown.png",
+    "image": "/assets/Syinq/Staff Details Dropdown.png",
     "link": "#"
   },
   {
     "title": "Staff Details",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Staff Details.png",
+    "image": "/assets/Syinq/Staff Details.png",
     "link": "#"
   },
   {
     "title": "Start page",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Start page.png",
+    "image": "/assets/Syinq/Start page.png",
     "link": "#"
   },
   {
     "title": "Student Details Dropdown",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Student Details Dropdown.png",
+    "image": "/assets/Syinq/Student Details Dropdown.png",
     "link": "#"
   },
   {
     "title": "Student Details",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Student Details.png",
+    "image": "/assets/Syinq/Student Details.png",
     "link": "#"
   },
   {
     "title": "Student Profile",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Student Profile.png",
+    "image": "/assets/Syinq/Student Profile.png",
     "link": "#"
   },
   {
     "title": "Verify number otp",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Verify number otp.png",
+    "image": "/assets/Syinq/Verify number otp.png",
     "link": "#"
   },
   {
     "title": "Verify number",
     "subtitle": "App Design",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/Syinq/Verify number.png",
+    "image": "/assets/Syinq/Verify number.png",
     "link": "#"
   },
   {
     "title": "ebc2.0",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/syinq_social_media_posts/ebc2.0.png",
+    "image": "/assets/syinq_social_media_posts/ebc2.0.png",
     "link": "#"
   },
   {
     "title": "empty_seats",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/syinq_social_media_posts/empty_seats.png",
+    "image": "/assets/syinq_social_media_posts/empty_seats.png",
     "link": "#"
   },
   {
     "title": "insta_post",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/syinq_social_media_posts/insta_post.png",
+    "image": "/assets/syinq_social_media_posts/insta_post.png",
     "link": "#"
   },
   {
     "title": "john_cena",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/syinq_social_media_posts/john_cena.png",
+    "image": "/assets/syinq_social_media_posts/john_cena.png",
     "link": "#"
   },
   {
     "title": "spin wheel",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/syinq_social_media_posts/spin wheel.png",
+    "image": "/assets/syinq_social_media_posts/spin wheel.png",
     "link": "#"
   },
   {
     "title": "syinq_standee_post",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/syinq_social_media_posts/syinq_standee_post.png",
+    "image": "/assets/syinq_social_media_posts/syinq_standee_post.png",
     "link": "#"
   },
   {
     "title": "THIS SEAT IS SINGLE 1",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/syinq_social_media_posts/THIS SEAT IS SINGLE 1.png",
+    "image": "/assets/syinq_social_media_posts/THIS SEAT IS SINGLE 1.png",
     "link": "#"
   },
   {
     "title": "ticket_post",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
-    "image": "/portfolio2/assets/syinq_social_media_posts/ticket_post.png",
+    "image": "/assets/syinq_social_media_posts/ticket_post.png",
     "link": "#"
   }
 ];
