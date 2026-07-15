@@ -64,10 +64,11 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
   - Uses Framer Motion and GSAP for animations
 
 
-#### [P02-SP05] — Project/Experience Card Polish & Full-Bleed Footer (2026-07-10)
-- **Description**: Upgraded Project Cards to minimalist frosted glass with hover scaling. Enhanced Experience cards with asymmetric shape-shifting and translate hovers. Extended Footer to full-bleed. Fixed Vite build error.
+#### [P02-SP06] — Added DesignWork Section & Vercel Prep (2026-07-15)
+- **Description**: Created dynamic CSS Grid to showcase 35 Figma exported assets. Built a pure CSS custom 'Soft Ethereal' typography logo with glass hover effect. Updated vite.config.js base path and image asset paths to prep for Vercel deployment.
 - **Changed files**:
-  - src/components/Projects.jsx, src/components/Footer.jsx, src/index.css
+  - src/components/DesignWork.jsx (NEW)
+  - src/App.jsx, src/data.js, src/components/Nav.jsx, src/index.css, vite.config.js
 - **Revert**: Run git reset --hard HEAD and git clean -fd if uncommitted, or git revert <commit-hash> if committed.
 
 ### [P04] Portfolio p4
@@ -162,6 +163,8 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
 | 2026-07-08 | P02     | Bento Grid Architecture       | SP01      | Success  |
 | 2026-07-10 | P02     | MS Edge Animation Bug Fixes   | SP03      | Success  |
 | 2026-07-10 | P02     | Mobile UI Layout Bug Fixes    | SP04      | Success  |
+| 2026-07-15 | P02     | DesignWork Grid & Typo Logo   | SP06      | Success  |
+| 2026-07-15 | P02     | Prep for Vercel Deployment    | SP06      | Success  |
 
 ---
 
@@ -174,6 +177,8 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
 | 2026-07-08 | P02     | Bento Architecture | vite   | Build passed                  |
 | 2026-07-10 | P02     | Edge Animation Fix | vite   | Build passed                  |
 | 2026-07-10 | P02     | Mobile Layout Fix  | vite   | Build passed                  |
+| 2026-07-15 | P02     | DesignWork Section | vite   | Build passed                  |
+| 2026-07-15 | P02     | Vercel Prep        | vite   | Build passed                  |
 
 ---
 
@@ -233,6 +238,9 @@ These rules apply across ALL projects at all times.
 | 2026-07-08 | P02 (Portfolio) User rejected Bento layout; reverted back to [P02-SP01] baseline. |
 | 2026-07-10 | P02 (Portfolio) Fixed MS Edge rendering bugs causing animations to disappear.     |
 | 2026-07-10 | P02 (Portfolio) Fixed mobile layout bugs for profile image and skills wheel.      |
+| 2026-07-15 | P02 (Portfolio) Created a Design section grid to showcase 35 image assets.        |
+| 2026-07-15 | P02 (Portfolio) Built a pure CSS minimalistic typography logo ("Soft Ethereal").  |
+| 2026-07-15 | P02 (Portfolio) Prepped repository for Vercel deployment (removed base subpath).  |
 
 ---
 
