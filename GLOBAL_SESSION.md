@@ -70,6 +70,15 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
   - src/components/Projects.jsx, src/components/Footer.jsx, src/index.css
 - **Revert**: Run git reset --hard HEAD and git clean -fd if uncommitted, or git revert <commit-hash> if committed.
 
+### [P04] Portfolio p4
+- **Root**: `C:\Users\manit\OneDrive\Desktop\MANIT\portfolio\p4`
+- **Local Session**: `SESSION.md` in project root
+- **Stack**: React, Vite, Vanilla CSS
+- **Status**: Active development
+- **Last Worked**: 2026-07-13
+- **Quick Notes**:
+  - Minimalist design with grid background, sticky bottom nav, left sidebar dots.
+
 <!-- TEMPLATE — copy & fill when adding a new project
 ### [P0X] Project Name
 - **Root**: `C:\Users\manit\OneDrive\Desktop\MANIT\projects\...`

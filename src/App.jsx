@@ -10,6 +10,7 @@ import Achievements from './components/Achievements';
 import Skills from './components/Skills';
 import Experience from './components/Experience';
 import Projects from './components/Projects';
+import DesignWork from './components/DesignWork';
 import Footer from './components/Footer';
 import GlobalBackground from './components/GlobalBackground';
 import CustomCursor from './components/CustomCursor';
@@ -90,6 +91,7 @@ export default function App() {
         <Skills />
         <Experience />
         <Projects />
+        <DesignWork />
         <Achievements />
         <Footer />
       </div>

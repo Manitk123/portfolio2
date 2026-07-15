@@ -63,7 +63,9 @@ export default function Nav() {
     <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <MagneticElement strength={0.2} radius={30}>
         <a href="#home" className="nav-logo" onClick={(e) => handleLinkClick(e, '#home')}>
-          MK.
+          <div className="mk-logo-wrapper soft-logo">
+            mk
+          </div>
         </a>
       </MagneticElement>
 
