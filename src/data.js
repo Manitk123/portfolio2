@@ -426,13 +426,6 @@ export const designs = [
     "link": "#"
   },
   {
-    "title": "john_cena",
-    "subtitle": "Social Media",
-    "description": "Figma Design Export",
-    "image": "/assets/syinq_social_media_posts/john_cena.png",
-    "link": "#"
-  },
-  {
     "title": "spin wheel",
     "subtitle": "Social Media",
     "description": "Figma Design Export",
