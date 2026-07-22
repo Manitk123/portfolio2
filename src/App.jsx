@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 import GlobalBackground from './components/GlobalBackground';
 import CustomCursor from './components/CustomCursor';
 import RippleEffect from './components/RippleEffect';
+import ClickSpark from './components/ClickSpark';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -85,15 +86,23 @@ export default function App() {
           pointerEvents: loading ? 'none' : 'auto',
         }}
       >
-        <Nav />
-        <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <DesignWork />
-        <Achievements />
-        <Footer />
+        <ClickSpark
+          sparkColor="#228B22"
+          sparkSize={10}
+          sparkRadius={15}
+          sparkCount={8}
+          duration={400}
+        >
+          <Nav />
+          <Hero />
+          <About />
+          <Skills />
+          <Experience />
+          <Projects />
+          <DesignWork />
+          <Achievements />
+          <Footer />
+        </ClickSpark>
       </div>
     </>
   );

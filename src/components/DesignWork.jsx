@@ -2,6 +2,7 @@ import React from 'react';
 import { designs } from '../data';
 import { useScrollReveal } from '../hooks/useAnimations';
 import AnimatedTitle from './AnimatedTitle';
+import BounceCards from './BounceCards';
 
 // Helper to chunk the array into rows
 const chunkArray = (arr, size) => {
@@ -12,11 +13,19 @@ const chunkArray = (arr, size) => {
   return result;
 };
 
+const transformStyles = [
+  "rotate(5deg) translate(-150px)",
+  "rotate(0deg) translate(-70px)",
+  "rotate(-5deg)",
+  "rotate(5deg) translate(70px)",
+  "rotate(-5deg) translate(150px)"
+];
+
 export default function DesignWork() {
   const sectionRef = useScrollReveal();
   
-  // Create rows of 7 items to ensure the hover dock effect doesn't break across lines
-  const designRows = chunkArray(designs, 7);
+  // Create rows of 5 items to match BounceCards transformStyles
+  const designRows = chunkArray(designs, 5);
 
   return (
     <section className="section design-section reveal" id="design" ref={sectionRef}>
@@ -24,34 +33,27 @@ export default function DesignWork() {
         <span className="section-label reveal">UI/UX & Graphics</span>
         <AnimatedTitle text="My Design Work" className="section-title" />
         <p className="section-subtitle reveal">
-          A collection of {designs.length} UI screens,and Figma posts.
+          A collection of {designs.length} UI screens and Figma posts.
         </p>
 
-        <div className="design-dock-wrapper">
-          {designRows.map((row, rowIndex) => (
-            <div className="container-items" key={`row-${rowIndex}`}>
-              {row.map((design, i) => (
-                <a 
-                  key={`item-${rowIndex}-${i}`} 
-                  href={design.image}
-                  className="item-color reveal" 
-                  style={{ transitionDelay: `${(i % 10) * 0.05}s` }}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <img 
-                    src={design.image} 
-                    alt={design.title} 
-                    loading="lazy"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = "https://placehold.co/600x400/1a1a1a/444444?text=Design";
-                    }}
-                  />
-                </a>
-              ))}
-            </div>
-          ))}
+        <div className="design-bounce-wrapper" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '4rem 2rem', marginTop: '4rem' }}>
+          {designRows.map((row, rowIndex) => {
+            const images = row.map(d => d.image || "https://placehold.co/600x400/1a1a1a/444444?text=Design");
+            return (
+              <BounceCards
+                key={`bounce-row-${rowIndex}`}
+                className="custom-bounceCards"
+                images={images}
+                containerWidth={500}
+                containerHeight={250}
+                animationDelay={0.5 + rowIndex * 0.2}
+                animationStagger={0.08}
+                easeType="elastic.out(1, 0.5)"
+                transformStyles={transformStyles}
+                enableHover={true}
+              />
+            );
+          })}
         </div>
       </div>
     </section>
