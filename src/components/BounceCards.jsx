@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './BounceCards.css';
@@ -14,15 +14,16 @@ export default function BounceCards({
   animationStagger = 0.06,
   easeType = 'elastic.out(1, 0.8)',
   transformStyles = [
-    'rotate(10deg) translate(-170px)',
-    'rotate(5deg) translate(-85px)',
-    'rotate(-3deg)',
-    'rotate(-10deg) translate(85px)',
-    'rotate(2deg) translate(170px)'
+    { rotate: 10, x: -170, y: -30 },
+    { rotate: 5, x: -85, y: -7 },
+    { rotate: -3, x: 0, y: 0 },
+    { rotate: -10, x: 85, y: -15 },
+    { rotate: 2, x: 170, y: 6 }
   ],
   enableHover = true
 }) {
   const containerRef = useRef(null);
+  
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
@@ -44,77 +45,66 @@ export default function BounceCards({
     return () => ctx.revert();
   }, [animationStagger, easeType, animationDelay]);
 
-  const getNoRotationTransform = transformStr => {
-    const hasRotate = /rotate\([\s\S]*?\)/.test(transformStr);
-    if (hasRotate) {
-      return transformStr.replace(/rotate\([\s\S]*?\)/, 'rotate(0deg)');
-    } else if (transformStr === 'none') {
-      return 'rotate(0deg)';
-    } else {
-      return `${transformStr} rotate(0deg)`;
-    }
-  };
-
-  const getPushedTransform = (baseTransform, offsetX) => {
-    const translateRegex = /translate\(([-0-9.]+)px\)/;
-    const match = baseTransform.match(translateRegex);
-    if (match) {
-      const currentX = parseFloat(match[1]);
-      const newX = currentX + offsetX;
-      return baseTransform.replace(translateRegex, `translate(${newX}px)`);
-    } else {
-      return baseTransform === 'none' ? `translate(${offsetX}px)` : `${baseTransform} translate(${offsetX}px)`;
-    }
-  };
+  // Pre-calculate pushed transforms to save JS execution time during rapid hovers
+  const hoverTransforms = useMemo(() => {
+    return images.map((_, hoveredIdx) => {
+      return images.map((_, i) => {
+        if (i === hoveredIdx) {
+          // The hovered card loses rotation and stands out
+          return { rotate: 0, x: transformStyles[i]?.x || 0, y: transformStyles[i]?.y || 0, scale: 1.15, zIndex: 10 };
+        }
+        // Others get pushed away horizontally
+        const offsetX = i < hoveredIdx ? -160 : 160;
+        return {
+          rotate: transformStyles[i]?.rotate || 0,
+          x: (transformStyles[i]?.x || 0) + offsetX,
+          y: transformStyles[i]?.y || 0,
+          scale: 0.95,
+          zIndex: 1
+        };
+      });
+    });
+  }, [images, transformStyles]);
 
   const pushSiblings = hoveredIdx => {
     if (!enableHover || !containerRef.current) return;
-
     const q = gsap.utils.selector(containerRef);
+    const targetTransforms = hoverTransforms[hoveredIdx];
 
     images.forEach((_, i) => {
       const target = q(`.card-${i}`);
       gsap.killTweensOf(target);
+      
+      const distance = Math.abs(hoveredIdx - i);
+      const delay = distance * 0.05;
 
-      const baseTransform = transformStyles[i] || 'none';
-
-      if (i === hoveredIdx) {
-        const noRotationTransform = getNoRotationTransform(baseTransform);
-        gsap.to(target, {
-          transform: noRotationTransform,
-          duration: 0.4,
-          ease: 'back.out(1.4)',
-          overwrite: 'auto'
-        });
-      } else {
-        const offsetX = i < hoveredIdx ? -160 : 160;
-        const pushedTransform = getPushedTransform(baseTransform, offsetX);
-
-        const distance = Math.abs(hoveredIdx - i);
-        const delay = distance * 0.05;
-
-        gsap.to(target, {
-          transform: pushedTransform,
-          duration: 0.4,
-          ease: 'back.out(1.4)',
-          delay,
-          overwrite: 'auto'
-        });
-      }
+      gsap.to(target, {
+        x: targetTransforms[i].x,
+        y: targetTransforms[i].y,
+        rotation: targetTransforms[i].rotate,
+        scale: targetTransforms[i].scale,
+        zIndex: targetTransforms[i].zIndex,
+        duration: 0.4,
+        ease: 'back.out(1.4)',
+        delay: i === hoveredIdx ? 0 : delay,
+        overwrite: 'auto'
+      });
     });
   };
 
   const resetSiblings = () => {
     if (!enableHover || !containerRef.current) return;
-
     const q = gsap.utils.selector(containerRef);
 
     images.forEach((_, i) => {
       const target = q(`.card-${i}`);
       gsap.killTweensOf(target);
-      const baseTransform = transformStyles[i] || 'none';
       gsap.to(target, {
-        transform: baseTransform,
+        x: transformStyles[i]?.x || 0,
+        y: transformStyles[i]?.y || 0,
+        rotation: transformStyles[i]?.rotate || 0,
+        scale: 1,
+        zIndex: 2,
         duration: 0.4,
         ease: 'back.out(1.4)',
         overwrite: 'auto'
@@ -132,23 +122,28 @@ export default function BounceCards({
         height: containerHeight
       }}
     >
-      {images.map((src, idx) => (
-        <a
-          href={src}
-          target="_blank"
-          rel="noopener noreferrer"
-          key={idx}
-          className={`card card-${idx}`}
-          style={{
-            display: 'block',
-            transform: transformStyles[idx] ?? 'none'
-          }}
-          onMouseEnter={() => pushSiblings(idx)}
-          onMouseLeave={resetSiblings}
-        >
-          <img className="image" src={src} alt={`card-${idx}`} loading="lazy" decoding="async" />
-        </a>
-      ))}
+      {images.map((src, idx) => {
+        const initialStyle = transformStyles[idx] || { x: 0, y: 0, rotate: 0 };
+        return (
+          <a
+            href={src}
+            target="_blank"
+            rel="noopener noreferrer"
+            key={idx}
+            className={`card card-${idx}`}
+            style={{
+              display: 'block',
+              // Use GSAP-compatible initial styles
+              transform: `translate(${initialStyle.x}px, ${initialStyle.y}px) rotate(${initialStyle.rotate}deg)`,
+              zIndex: 2
+            }}
+            onMouseEnter={() => pushSiblings(idx)}
+            onMouseLeave={resetSiblings}
+          >
+            <img className="image" src={src} alt={`card-${idx}`} loading="lazy" decoding="async" />
+          </a>
+        );
+      })}
     </div>
   );
 }

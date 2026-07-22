@@ -530,16 +530,64 @@ button {
 }
 
 .nav.scrolled {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 14px 40px;
-  top: 15px;
-  width: 85%;
-  max-width: 1000px;
-  border-radius: 50px;
-  border: 1px solid rgba(178, 196, 138, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transform: translate(-50%, -150%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+/* ============================================================
+   SIDEBAR (LineSidebar integration)
+   ============================================================ */
+.sidebar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 210px;
+  height: 100vh;
+  background-color: #e5e5e5;
+  z-index: var(--z-nav);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0 40px 10px;
+  transform: translateX(-100%);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-container.visible {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar-logo {
+  margin-bottom: 40px;
+  padding-left: 50px; /* Aligns roughly with line sidebar */
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.sidebar-footer .nav-resume-btn {
+  display: inline-block;
+  background: transparent;
 }
 
 .nav-logo {
@@ -772,6 +820,26 @@ button {
   100% { transform: translateY(-30vh) translateX(10vw); opacity: 0; }
 }
 
+.main-content {
+  position: relative;
+  z-index: 2;
+  transition: padding-left 0.8s cubic-bezier(0.16, 1, 0.3, 1), width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+body.is-scrolled .main-content {
+  padding-left: 280px; /* Sidebar width */
+  width: 100vw;
+}
+
+/* Also shift the fixed avatar */
+.avatar-container {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+body.is-scrolled .avatar-container {
+  transform: translateX(280px);
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -786,7 +854,7 @@ button {
   line-height: 1;
   letter-spacing: -2px;
   color: var(--white);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-name-line {
@@ -1470,8 +1538,8 @@ button {
 .carousel-stage {
   position: relative;
   width: 100%;
-  height: 750px;
-  margin-top: var(--space-xl);
+  height: 480px;
+  margin-top: var(--space-lg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1681,7 +1749,7 @@ button {
 /* Dots */
 .carousel-dots {
   position: absolute;
-  bottom: -120px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -2705,3 +2773,159 @@ button {
   font-size: 1.4rem;
 }
 
+.nav-logo,
+.nav-logo:focus,
+.nav-logo:focus-visible,
+.nav-logo:active,
+.mk-logo-wrapper {
+  outline: none !important;
+  border: none !important;
+  text-decoration: none;
+}
+
+/* ============================================================
+   GLOBAL LAYOUT SHIFT (LineSidebar)
+   ============================================================ */
+.main-content {
+  position: relative;
+  z-index: 2;
+  will-change: padding-left;
+  transition: padding-left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+body.is-scrolled .main-content {
+  padding-left: 210px; /* Sidebar width */
+}
+
+/* Also shift the fixed avatar */
+.avatar-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 250px;
+  height: 350px;
+  z-index: 5;
+  /* Initial position: right side of the hero title */
+  transform: translate(-15vw, 30vh);
+  will-change: transform;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+body.is-scrolled .avatar-container {
+  /* Shift horizontally to the right edge, maintain size and vertical position */
+  transform: translate(-20px, 30vh);
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE OVERRIDES
+   ============================================================ */
+@media (max-width: 1024px) {
+  /* Hide sidebar and reset padding on tablets and smaller */
+  .sidebar-container {
+    display: none !important;
+  }
+  
+  body.is-scrolled .main-content,
+  .main-content {
+    padding-left: 0 !important;
+  }
+  
+  /* Keep nav visible when scrolled on mobile */
+  .nav.scrolled {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    pointer-events: auto;
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    width: 90%;
+    top: 20px;
+    border-radius: 20px;
+  }
+  
+  /* Nav Toggle Hamburger */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 101;
+  }
+  
+  .nav-toggle span {
+    width: 100%;
+    height: 2px;
+    background: var(--teal);
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+  }
+  
+  .nav-toggle.open span:nth-child(1) { transform: rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg); }
+
+  /* Mobile Nav Links Overlay */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--white-pure);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 100;
+  }
+  
+  .nav-links.open {
+    transform: translateY(0);
+  }
+  
+  .nav-links .nav-link {
+    font-size: 1.5rem;
+  }
+  
+  /* Scale down Avatar */
+  .avatar-container {
+    transform: translate(-10vw, 20vh) scale(0.7);
+  }
+  body.is-scrolled .avatar-container {
+    transform: translate(-10px, 20vh) scale(0.6);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Footer mobile reflow */
+  .footer-bottom {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .footer-brand {
+    max-width: 100%;
+  }
+  
+  .footer-links-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  
+  /* Hide Avatar entirely on very small screens to save space */
+  .avatar-container {
+    display: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-links-grid {
+    grid-template-columns: 1fr;
+  }
+}

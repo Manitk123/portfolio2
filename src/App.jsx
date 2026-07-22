@@ -16,6 +16,7 @@ import GlobalBackground from './components/GlobalBackground';
 import CustomCursor from './components/CustomCursor';
 import RippleEffect from './components/RippleEffect';
 import ClickSpark from './components/ClickSpark';
+import Avatar3D from './components/Avatar3D';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,6 +48,9 @@ export default function App() {
       infinite: false,
     });
 
+    // Expose lenis globally for anchor link scrolling
+    window.lenis = lenis;
+
     lenis.on('scroll', ScrollTrigger.update);
 
     const tickerFunc = (time) => {
@@ -59,6 +63,7 @@ export default function App() {
     return () => {
       gsap.ticker.remove(tickerFunc);
       lenis.destroy();
+      delete window.lenis;
     };
   }, []);
 
@@ -93,6 +98,7 @@ export default function App() {
           sparkCount={8}
           duration={400}
         >
+          <Avatar3D />
           <Nav />
           <Hero />
           <About />

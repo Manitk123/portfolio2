@@ -1,0 +1,110 @@
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 120px 80px;
+  margin-top: 180px;
+  padding-bottom: 50px;
+  width: 100%;
+}
+
+.project-folder-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+}
+
+.project-folder-label {
+  margin-top: 60px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  color: var(--white);
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Paper Content Styling */
+.folder-paper-content {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  color: var(--charcoal-deep);
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+}
+
+.folder-paper-subtitle {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--teal-dark);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.folder-paper-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  margin: 0 0 8px 0;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.folder-paper-desc {
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: var(--charcoal-light);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Limit to 4 lines */
+  -webkit-box-orient: vertical;
+}
+
+.folder-paper-tech h4,
+.folder-paper-link h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  margin: 0 0 10px 0;
+  color: var(--charcoal);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  padding-bottom: 4px;
+}
+
+.folder-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.folder-tags .tag {
+  background: rgba(0, 180, 216, 0.1);
+  color: var(--teal-dark);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+}
+
+.folder-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: var(--charcoal-deep);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.folder-link-btn:hover {
+  background: var(--teal-dark);
+  transform: translateY(-2px);
+}

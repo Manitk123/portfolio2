@@ -12,7 +12,8 @@
 - **[P02-SP03]**: MS Edge Animation Bug Fixes
 - **[P02-SP04]**: Mobile UI Layout Bug Fixes
 - **[P02-SP05]**: Project/Experience Card Polish & Full-Bleed Footer
-- **[P02-SP06]**: Added DesignWork Section & Typographic Logo (Current)
+- **[P02-SP06]**: Added DesignWork Section & Typographic Logo
+- **[P02-SP07]**: save1 - Added BounceCards and ClickSpark (Current)
 
 ## Error Check & Verification
 - Build: `npm run build` completed successfully (369ms, 0 errors).

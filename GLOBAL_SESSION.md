@@ -141,6 +141,15 @@ Each entry is a summary of a known project. Expand one into a full PROJECT SESSI
   - src/components/Projects.jsx, src/components/Footer.jsx, src/index.css
 - **Revert**: Run git reset --hard HEAD and git clean -fd if uncommitted, or git revert <commit-hash> if committed.
 
+#### [P02-SP07] — save1 (2026-07-22)
+- **Description**: Added BounceCards for DesignWork section, optimized CSS performance, added ScrollTrigger, and added ClickSpark particle effect.
+- **Changed files**:
+  - src/components/BounceCards.jsx (NEW)
+  - src/components/BounceCards.css (NEW)
+  - src/components/ClickSpark.jsx (NEW)
+  - src/components/DesignWork.jsx, src/App.jsx
+- **Revert**: Run `git reset --hard HEAD` and `git clean -fd` if uncommitted, or `git revert <commit-hash>` if committed.
+
 <!-- TEMPLATE
 #### [PXX-SPYY] — Name (YYYY-MM-DD)
 - **Description**: What was done

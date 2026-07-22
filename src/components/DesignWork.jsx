@@ -14,11 +14,11 @@ const chunkArray = (arr, size) => {
 };
 
 const transformStyles = [
-  "rotate(5deg) translate(-150px)",
-  "rotate(0deg) translate(-70px)",
-  "rotate(-5deg)",
-  "rotate(5deg) translate(70px)",
-  "rotate(-5deg) translate(150px)"
+  { rotate: 5, x: -150, y: -13 },
+  { rotate: 0, x: -70, y: 0 },
+  { rotate: -5, x: 0, y: 0 },
+  { rotate: 5, x: 70, y: 6 },
+  { rotate: -5, x: 150, y: -13 }
 ];
 
 export default function DesignWork() {
