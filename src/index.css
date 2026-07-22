@@ -2590,12 +2590,10 @@ body.is-scrolled .avatar-container {
   border-radius: var(--radius-lg);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   padding: var(--space-xl) 0;
-  width: 100vw;
+  width: calc(100% + var(--space-lg) * 2);
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  margin-left: calc(-1 * var(--space-lg));
+  margin-right: calc(-1 * var(--space-lg));
 }
 
 .hero-resume-btn {
