@@ -2634,7 +2634,7 @@ body.is-scrolled .avatar-container {
    Design Work Section (3D Dock Stacked)
 ========================================= */
 .design-section {
-  padding: 100px 0;
+  padding: 100px var(--space-lg);
   position: relative;
   z-index: 10;
   overflow: hidden;
