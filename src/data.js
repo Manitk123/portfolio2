@@ -18,7 +18,7 @@ export const personalInfo = {
 };
 
 export const summary =
-  "Results-driven Aspiring Software Developer with a solid foundation in Computer Science, software design, and full-stack development. Proficient in architecting scalable web applications using React, Next.js, Node.js, and Firebase. Well-versed in leveraging advanced Data Structures and Algorithms to solve complex software engineering challenges, backed by a proven track record of solving 250+ LeetCode problems. Passionate about designing secure, efficient, and user-centric software solutions that bridge modern frontend applications with robust backend infrastructure and Generative AI integrations.";
+  "Results-driven Aspiring Software Developer with a solid foundation in Computer Science, software design, and full-stack development. Proficient in architecting scalable web applications using React, Next.js, Node.js, and Firebase. Well-versed in leveraging advanced Data Structures and Algorithms to solve complex software engineering challenges, backed by a proven track record of solving 400+ LeetCode problems. Passionate about designing secure, efficient, and user-centric software solutions that bridge modern frontend applications with robust backend infrastructure and Generative AI integrations.";
 
 export const education = {
   degree: "Bachelor of Technology in Computer Science",
@@ -26,7 +26,7 @@ export const education = {
   specialization: "Cyber Security",
   location: "Greater Noida, UP",
   expected: "2027",
-  gpa: "7.5 / 10.0",
+  gpa: "8.1 / 10.0",
 };
 
 export const skills = [
@@ -166,7 +166,7 @@ export const projects = [
 ];
 
 export const achievements = [
-  { label: "LeetCode Problems", value: 250, suffix: "+" },
+  { label: "LeetCode Problems", value: 400, suffix: "+" },
   { label: "Projects Built", value: 6, suffix: "+" },
   { label: "Internships", value: 2, suffix: "" },
 ];
